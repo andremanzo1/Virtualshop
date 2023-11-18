@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="recyclerview" type="id" />
+    <item name="loginButton" type="id" />
+    <item name="createAccountButton" type="id" />
+    <item name="usernameTextView" type="id" />
+    <item name="isAdminTextView" type="id" />
+    <item name="adminButton" type="id" />
+    <item name="logoutButton" type="id" />
+</resources>
