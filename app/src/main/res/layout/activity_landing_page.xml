@@ -1,43 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/usernameTextView"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/userButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
-
-    <TextView
-        android:id="@+id/isAdminTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Is Admin"
-        android:textSize="18sp"
-        android:layout_below="@id/usernameTextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"/>
+        android:text="Login as User"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/adminButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Admin Area"
-        android:layout_below="@id/isAdminTextView"
+        android:text="Login as Admin"
+        android:layout_below="@id/userButton"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:visibility="gone"/>
+        android:layout_centerHorizontal="true"/>
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_below="@id/adminButton"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
 </RelativeLayout>

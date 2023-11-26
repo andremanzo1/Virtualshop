@@ -1,0 +1,50 @@
+<!-- activity_admin_login.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Admin Login Title -->
+    <TextView
+        android:id="@+id/adminLoginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin Login"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <!-- Admin Username Input -->
+    <EditText
+        android:id="@+id/adminUsernameEditText"
+        android:layout_width="382dp"
+        android:layout_height="65dp"
+        android:layout_below="@id/adminLoginTitle"
+        android:layout_marginTop="20dp"
+        android:hint="Admin Username" />
+
+    <!-- Admin Password Input -->
+
+    <!-- Login Button -->
+    <EditText
+        android:id="@+id/adminPasswordEditText"
+        android:layout_width="382dp"
+        android:layout_height="72dp"
+        android:layout_below="@id/adminUsernameEditText"
+        android:layout_marginTop="21dp"
+        android:hint="Admin Password"
+        android:inputType="textPassword" />
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adminPasswordEditText"
+        android:layout_marginTop="20dp"
+        android:text="Login" />
+
+    <!-- Add other UI elements as needed -->
+
+</RelativeLayout>
