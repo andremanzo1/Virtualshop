@@ -1,11 +1,11 @@
-<!-- activity_admin_home.xml -->
+
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Add your admin home page UI elements here -->
+
 
     <TextView
         android:id="@+id/welcomeTextView"
@@ -16,9 +16,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"/>
 
-    <!-- Add other UI elements as needed -->
 
-    <!-- Logout Button -->
+
+
     <Button
         android:id="@+id/adminLogoutButton"
         android:layout_width="124dp"

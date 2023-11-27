@@ -23,12 +23,12 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <!-- Add any intent filters or other configuration specific to MainActivity -->
+
         </activity>
 
         <activity
             android:name=".LoginActivity">
-            <!-- Add any intent filters or other configuration specific to LoginActivity -->
+
         </activity>
 
         <activity
@@ -41,13 +41,17 @@
             android:exported="true">
         </activity>
 
-        <!-- Add the registration for AdminHomeActivity here -->
+
         <activity
             android:name=".AdminHomeActivity"
             android:exported="true">
-            <!-- Add any intent filters or other configuration specific to AdminHomeActivity -->
+
         </activity>
 
+        <activity
+            android:name=".CreateAccountActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

@@ -22,6 +22,14 @@ public class UserRepository {
         new GetUserAsyncTask(userDao, callback).execute(username, password);
     }
 
+    public void getUserByUsername(String username, UserRepositoryCallback callback) {
+        new GetUserByUsernameAsyncTask(userDao, callback).execute(username);
+    }
+
+    public void insertUser(User user) {
+        new InsertUserAsyncTask(userDao).execute(user);
+    }
+
     private static class GetUserAsyncTask extends AsyncTask<String, Void, User> {
         private UserDao userDao;
         private UserRepositoryCallback callback;
@@ -46,13 +54,44 @@ public class UserRepository {
         }
     }
 
+    private static class GetUserByUsernameAsyncTask extends AsyncTask<String, Void, User> {
+        private UserDao userDao;
+        private UserRepositoryCallback callback;
+
+        GetUserByUsernameAsyncTask(UserDao userDao, UserRepositoryCallback callback) {
+            this.userDao = userDao;
+            this.callback = callback;
+        }
+
+        @Override
+        protected User doInBackground(String... params) {
+            String username = params[0];
+            return userDao.getUserByUsername(username);
+        }
+
+        @Override
+        protected void onPostExecute(User user) {
+            if (callback != null) {
+                callback.onUserLoaded(user);
+            }
+        }
+    }
+
+    private static class InsertUserAsyncTask extends AsyncTask<User, Void, Void> {
+        private UserDao userDao;
+
+        InsertUserAsyncTask(UserDao userDao) {
+            this.userDao = userDao;
+        }
+
+        @Override
+        protected Void doInBackground(User... users) {
+            userDao.insert(users[0]);
+            return null;
+        }
+    }
+
     public interface UserRepositoryCallback {
         void onUserLoaded(User user);
-
-        // Add this method
-        // Your existing logic can be included here
-        // For example:
-        // Log.d("UserRepository", "User loaded: " + user);
-        // // Your existing logic
     }
 }

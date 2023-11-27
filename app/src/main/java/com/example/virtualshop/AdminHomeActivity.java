@@ -17,7 +17,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         Log.d("AdminHomeActivity", "Welcome Administrator Page Loaded");
 
-        // Add your welcome administrator page logic here
+        // Add welcome administrator page logic here
 
         Button logoutButton = findViewById(R.id.adminLogoutButton);
 
@@ -27,7 +27,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 // Handle logout button click
                 Intent landingPageIntent = new Intent(AdminHomeActivity.this, LandingPageActivity.class);
                 startActivity(landingPageIntent);
-                finish(); // Optional: Close the AdminHomeActivity
+                finish(); // Close the AdminHomeActivity
             }
         });
     }

@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText usernameEditText = findViewById(R.id.usernameEditText);
         EditText passwordEditText = findViewById(R.id.passwordEditText);
         Button loginButton = findViewById(R.id.loginButton);
-
+        Button backButton = findViewById(R.id.backButton);
         // Set a click listener for the login button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +55,16 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
-                // Continue with other login logic...
+
+            }
+        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create an Intent to navigate back to the landing page
+                Intent landingIntent = new Intent(LoginActivity.this, LandingPageActivity.class);
+                startActivity(landingIntent);
+                finish(); // Call finish() to close the current activity if needed
             }
         });
     }

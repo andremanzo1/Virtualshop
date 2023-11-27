@@ -15,6 +15,15 @@ public class LandingPageActivity extends AppCompatActivity {
 
         Button userButton = findViewById(R.id.userButton);
         Button adminButton = findViewById(R.id.adminButton);
+        Button createAccountButton = findViewById(R.id.createAccountButton);
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle the click event for the "Create Account" button
+                Intent createAccountIntent = new Intent(LandingPageActivity.this, CreateAccountActivity.class);
+                startActivity(createAccountIntent);
+            }
+        });
 
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override

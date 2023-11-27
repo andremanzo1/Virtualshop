@@ -9,6 +9,12 @@ import java.util.Objects;
 
 @Entity
 public class User {
+
+
+    public User() {
+
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -53,6 +59,11 @@ public class User {
     }
 
     public boolean isAdmin;
+    public User(@NonNull String username, @NonNull String password, boolean isAdmin) {
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

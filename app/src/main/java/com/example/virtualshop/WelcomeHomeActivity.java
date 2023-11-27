@@ -17,7 +17,7 @@ public class WelcomeHomeActivity extends AppCompatActivity {
 
         Log.d("WelcomeHomeActivity", "Welcome Home Page Loaded");
 
-        // Add your welcome home page logic here
+        // Add welcome home page logic here
 
         Button logoutButton = findViewById(R.id.logoutButton);
 
@@ -27,8 +27,9 @@ public class WelcomeHomeActivity extends AppCompatActivity {
                 // Handle logout button click
                 Intent landingPageIntent = new Intent(WelcomeHomeActivity.this, LandingPageActivity.class);
                 startActivity(landingPageIntent);
-                finish(); // Optional: Close the WelcomeHomeActivity
+                finish(); // Close the WelcomeHomeActivity
             }
         });
+
     }
 }

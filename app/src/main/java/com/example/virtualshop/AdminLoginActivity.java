@@ -19,7 +19,7 @@ public class AdminLoginActivity extends AppCompatActivity {
         EditText adminUsernameEditText = findViewById(R.id.adminUsernameEditText);
         EditText adminPasswordEditText = findViewById(R.id.adminPasswordEditText);
         Button loginButton = findViewById(R.id.loginButton);
-
+        Button backButton = findViewById(R.id.backButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,11 +32,20 @@ public class AdminLoginActivity extends AppCompatActivity {
                     // Admin2 login successful
                     Intent adminIntent = new Intent(AdminLoginActivity.this, AdminHomeActivity.class);
                     startActivity(adminIntent);
-                    finish(); // Optional: Close the admin login activity
+                    finish(); //  Close the admin login activity
                 } else {
                     // Invalid credentials, show a message
                     Toast.makeText(AdminLoginActivity.this, "Invalid admin credentials", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create an Intent to navigate back to the landing page
+                Intent landingIntent = new Intent(AdminLoginActivity.this, LandingPageActivity.class);
+                startActivity(landingIntent);
+                finish(); //  Close the admin login activity
             }
         });
     }
