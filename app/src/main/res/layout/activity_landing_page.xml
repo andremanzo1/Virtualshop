@@ -6,28 +6,18 @@
     android:padding="16dp">
 
     <Button
-        android:id="@+id/userButton"
+        android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login as User"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/adminButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login as Admin"
-        android:layout_below="@id/userButton"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"/>
-
+        android:layout_centerVertical="true"
+        android:text="Login" />
 
     <Button
         android:id="@+id/createAccountButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/adminButton"
-        android:layout_marginTop="66dp"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="16dp"
         android:text="Create Account" />
+
 </RelativeLayout>

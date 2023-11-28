@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText passwordEditText = findViewById(R.id.passwordEditText);
         Button loginButton = findViewById(R.id.loginButton);
         Button backButton = findViewById(R.id.backButton);
+
         // Set a click listener for the login button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,15 +39,18 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onUserLoaded(User user) {
                         if (user != null) {
-                            if (user.isAdmin() && inputUsername.equals("admin2")) {
-                                // Admin (admin2) trying to log in through user option - show error
-                                Toast.makeText(LoginActivity.this, "Invalid admin credentials", Toast.LENGTH_SHORT).show();
+                            // Perform login
+                            Intent homeIntent;
+                            if (user.isAdmin()) {
+                                // Admin login
+                                homeIntent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                             } else {
-                                // User is not an admin or admin2 - perform login
-                                Intent userIntent = new Intent(LoginActivity.this, WelcomeHomeActivity.class);
-                                startActivity(userIntent);
-                                finish();
+                                // User login
+                                homeIntent = new Intent(LoginActivity.this, WelcomeHomeActivity.class);
                             }
+
+                            startActivity(homeIntent);
+                            finish();
                         } else {
                             // Invalid credentials, handle accordingly
                             Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
@@ -54,10 +58,9 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
         });
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
