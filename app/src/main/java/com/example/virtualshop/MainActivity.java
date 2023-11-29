@@ -7,12 +7,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LandingPageActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing_page);
+        setContentView(R.layout.activity_main_page);
 
         Button loginButton = findViewById(R.id.loginButton);
         Button createAccountButton = findViewById(R.id.createAccountButton);
@@ -21,7 +21,7 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Handle the click event for the "Create Account" button
-                Intent createAccountIntent = new Intent(LandingPageActivity.this, CreateAccountActivity.class);
+                Intent createAccountIntent = new Intent(MainActivity.this, CreateAccountActivity.class);
                 startActivity(createAccountIntent);
             }
         });
@@ -30,7 +30,7 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle login button click
-                startActivity(new Intent(LandingPageActivity.this, LoginActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
     }

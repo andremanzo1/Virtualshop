@@ -39,8 +39,9 @@ public class CreateAccountActivity extends AppCompatActivity {
                             User newUser = new User(enteredUsername, enteredPassword, false);
                             userRepository.insertUser(newUser);
 
-                            // Auto-login after account creation
+                            // Pass the username to the Welcome Home activity
                             Intent homeIntent = new Intent(CreateAccountActivity.this, WelcomeHomeActivity.class);
+                            homeIntent.putExtra("USERNAME_KEY", enteredUsername);
                             startActivity(homeIntent);
                             finish(); // Optional: Close the create account activity
                         } else {

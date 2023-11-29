@@ -1,16 +1,28 @@
 package com.example.virtualshop;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+
 @Database(entities = {User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 
     private static volatile AppDatabase INSTANCE;
+
+    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            new InsertPredefinedUsersAsyncTask(INSTANCE).execute();
+        }
+    };
 
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -19,19 +31,31 @@ public abstract class AppDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDatabase.class, "app_database")
                             .fallbackToDestructiveMigration()
+                            .addCallback(roomCallback)
                             .build();
-
-                    // Insert predefined users during database creation
-                    insertPredefinedUsers(INSTANCE);
                 }
             }
         }
         return INSTANCE;
     }
 
-    private static void insertPredefinedUsers(final AppDatabase db) {
+    private static class InsertPredefinedUsersAsyncTask extends AsyncTask<Void, Void, Void> {
+        private UserDao userDao;
+
+        InsertPredefinedUsersAsyncTask(AppDatabase db) {
+            userDao = db.userDao();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            insertPredefinedUsers(userDao);
+            return null;
+        }
+    }
+
+    private static void insertPredefinedUsers(UserDao userDao) {
         try {
-            User existingUser = db.userDao().getUserByUsername("testuser1");
+            User existingUser = userDao.getUserByUsername("testuser1");
             if (existingUser == null) {
                 User user1 = new User();
                 user1.username = "testuser1";
@@ -43,8 +67,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 user2.password = "admin2";
                 user2.isAdmin = true;
 
-                db.userDao().insert(user1);
-                db.userDao().insert(user2);
+                userDao.insert(user1);
+                userDao.insert(user2);
 
                 Log.d("AppDatabase", "Predefined users inserted successfully");
             } else {

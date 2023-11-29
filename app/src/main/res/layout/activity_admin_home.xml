@@ -5,26 +5,20 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-
-
     <TextView
-        android:id="@+id/welcomeTextView"
+        android:id="@+id/adminUsernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, Administrator!"
+        android:text=""
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"/>
-
-
-
 
     <Button
         android:id="@+id/adminLogoutButton"
         android:layout_width="124dp"
         android:layout_height="110dp"
-        android:layout_below="@id/welcomeTextView"
-        android:layout_marginTop="521dp"
+        android:layout_below="@id/adminUsernameTextView"
+        android:layout_marginTop="16dp"
         android:text="Logout" />
-
 </RelativeLayout>

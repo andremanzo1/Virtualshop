@@ -40,17 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onUserLoaded(User user) {
                         if (user != null) {
                             // Perform login
-                            Intent homeIntent;
-                            if (user.isAdmin()) {
-                                // Admin login
-                                homeIntent = new Intent(LoginActivity.this, AdminHomeActivity.class);
-                            } else {
-                                // User login
-                                homeIntent = new Intent(LoginActivity.this, WelcomeHomeActivity.class);
-                            }
-
-                            startActivity(homeIntent);
-                            finish();
+                            startHomeActivity(user.getUsername());
                         } else {
                             // Invalid credentials, handle accordingly
                             Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
@@ -65,10 +55,27 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Create an Intent to navigate back to the landing page
-                Intent landingIntent = new Intent(LoginActivity.this, LandingPageActivity.class);
+                Intent landingIntent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(landingIntent);
                 finish(); // Call finish() to close the current activity if needed
             }
         });
     }
+
+    private void startHomeActivity(String username) {
+        Intent homeIntent;
+        if (username.equalsIgnoreCase("admin2")) {
+            // Admin login
+            homeIntent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+            homeIntent.putExtra("USERNAME_KEY", username);
+        } else {
+            // User login
+            homeIntent = new Intent(LoginActivity.this, WelcomeHomeActivity.class);
+            homeIntent.putExtra("USERNAME_KEY", username); // Pass the username as an extra
+        }
+
+        startActivity(homeIntent);
+        finish();
+    }
+
 }

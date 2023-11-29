@@ -1,11 +1,8 @@
 
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
-
-
 
     <TextView
         android:id="@+id/welcomeTextView"
@@ -16,14 +13,21 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"/>
 
-
+    <!-- Add TextView for displaying the username -->
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcomeTextView"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"/> <!-- Set a color, replace with your desired text color -->
 
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_below="@id/welcomeTextView"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@id/usernameTextView"
+        android:layout_marginTop="107dp"
+        android:text="Logout" />
 </RelativeLayout>
