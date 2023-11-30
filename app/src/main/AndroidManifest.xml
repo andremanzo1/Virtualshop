@@ -27,15 +27,9 @@
             android:exported="true">
         </activity>
 
-        <activity
-            android:name=".WelcomeHomeActivity"
-            android:exported="true">
-        </activity>
-
-
 
         <activity
-            android:name=".AdminHomeActivity"
+            android:name=".LandingPageActivity"
             android:exported="true">
 
         </activity>

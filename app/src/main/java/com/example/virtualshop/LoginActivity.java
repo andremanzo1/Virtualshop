@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onUserLoaded(User user) {
                         if (user != null) {
                             // Perform login
-                            startHomeActivity(user.getUsername());
+                            startHomeActivity(user.getUsername(), user.isAdmin());
                         } else {
                             // Invalid credentials, handle accordingly
                             Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
@@ -62,20 +62,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void startHomeActivity(String username) {
-        Intent homeIntent;
-        if (username.equalsIgnoreCase("admin2")) {
-            // Admin login
-            homeIntent = new Intent(LoginActivity.this, AdminHomeActivity.class);
-            homeIntent.putExtra("USERNAME_KEY", username);
-        } else {
-            // User login
-            homeIntent = new Intent(LoginActivity.this, WelcomeHomeActivity.class);
-            homeIntent.putExtra("USERNAME_KEY", username); // Pass the username as an extra
-        }
-
+    private void startHomeActivity(String username, boolean isAdmin) {
+        Intent homeIntent = new Intent(LoginActivity.this, LandingPageActivity.class);
+        homeIntent.putExtra("USERNAME_KEY", username);
+        homeIntent.putExtra("IS_ADMIN", isAdmin);
         startActivity(homeIntent);
         finish();
     }
-
 }

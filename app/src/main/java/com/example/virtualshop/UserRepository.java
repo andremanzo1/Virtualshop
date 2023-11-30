@@ -1,5 +1,4 @@
 package com.example.virtualshop;
-
 import android.app.Application;
 import android.os.AsyncTask;
 import android.util.Log;

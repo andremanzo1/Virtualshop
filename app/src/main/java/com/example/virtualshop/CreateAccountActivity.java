@@ -40,7 +40,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                             userRepository.insertUser(newUser);
 
                             // Pass the username to the Welcome Home activity
-                            Intent homeIntent = new Intent(CreateAccountActivity.this, WelcomeHomeActivity.class);
+                            Intent homeIntent = new Intent(CreateAccountActivity.this, LandingPageActivity.class);
                             homeIntent.putExtra("USERNAME_KEY", enteredUsername);
                             startActivity(homeIntent);
                             finish(); // Optional: Close the create account activity
