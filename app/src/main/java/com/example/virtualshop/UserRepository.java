@@ -10,6 +10,7 @@ import java.util.List;
 public class UserRepository {
     private UserDao userDao;
     private LiveData<List<User>> allUsers;
+
     public UserRepository(Application application) {
         try {
             AppDatabase db = AppDatabase.getDatabase(application);
@@ -35,6 +36,9 @@ public class UserRepository {
 
     public void insertUser(User user) {
         new InsertUserAsyncTask(userDao).execute(user);
+    }
+    public void deleteUser(User user) {
+        new DeleteUserAsyncTask(userDao).execute(user);
     }
 
     private static class GetUserAsyncTask extends AsyncTask<String, Void, User> {
@@ -94,6 +98,19 @@ public class UserRepository {
         @Override
         protected Void doInBackground(User... users) {
             userDao.insert(users[0]);
+            return null;
+        }
+    }
+    private static class DeleteUserAsyncTask extends AsyncTask<User, Void, Void> {
+        private UserDao userDao;
+
+        DeleteUserAsyncTask(UserDao userDao) {
+            this.userDao = userDao;
+        }
+
+        @Override
+        protected Void doInBackground(User... users) {
+            userDao.delete(users[0]);
             return null;
         }
     }

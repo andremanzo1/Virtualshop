@@ -20,4 +20,11 @@ public class UserViewModel extends AndroidViewModel {
     public LiveData<List<User>> getAllUsers() {
         return allUsers;
     }
+    public void insertUser(User user) {
+        userRepository.insertUser(user);
+    }
+
+    public void deleteUser(User user) {
+        userRepository.deleteUser(user);
+    }
 }

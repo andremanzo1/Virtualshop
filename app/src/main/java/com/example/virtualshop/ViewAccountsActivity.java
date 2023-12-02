@@ -1,8 +1,7 @@
 package com.example.virtualshop;
-import com.example.virtualshop.UserListAdapter;
+
 import android.os.Bundle;
 import androidx.lifecycle.Observer;
-import com.example.virtualshop.User;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ViewAccountsActivity extends AppCompatActivity {
+public class ViewAccountsActivity extends AppCompatActivity implements UserListAdapter.OnDeleteButtonClickListener {
     private UserViewModel userViewModel;
+    private UserListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class ViewAccountsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_accounts);
 
         RecyclerView recyclerView = findViewById(R.id.usersRecyclerView);
-        final UserListAdapter adapter = new UserListAdapter(); // Implement your own adapter
+        adapter = new UserListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -33,5 +33,13 @@ public class ViewAccountsActivity extends AppCompatActivity {
                 adapter.setUsers(users);
             }
         });
+    }
+
+    @Override
+    public void onDeleteButtonClick(User user) {
+        // Implement the logic to delete the user from the database
+        // Update your UserRepository or ViewModel to handle user deletion
+        // For example:
+        userViewModel.deleteUser(user);
     }
 }

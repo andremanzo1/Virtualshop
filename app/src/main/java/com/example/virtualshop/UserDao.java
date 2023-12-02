@@ -3,6 +3,7 @@ package com.example.virtualshop;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -18,5 +19,6 @@ public interface UserDao {
     LiveData<List<User>> getAllUsers();
     @Insert
     void insert(User user);
-
+    @Delete
+    void delete(User user);
 }

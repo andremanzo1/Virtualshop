@@ -3,6 +3,7 @@ package com.example.virtualshop;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,11 @@ import java.util.List;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserViewHolder> {
     private List<User> users = new ArrayList<>();
+    private OnDeleteButtonClickListener onDeleteButtonClickListener;
+
+    public UserListAdapter(OnDeleteButtonClickListener onDeleteButtonClickListener) {
+        this.onDeleteButtonClickListener = onDeleteButtonClickListener;
+    }
 
     @NonNull
     @Override
@@ -26,7 +32,15 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User currentUser = users.get(position);
         holder.usernameTextView.setText(currentUser.getUsername());
-        // Add more bindings as needed
+
+        // Set click listener for delete button
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle delete button click
+                onDeleteButtonClickListener.onDeleteButtonClick(currentUser);
+            }
+        });
     }
 
     @Override
@@ -41,11 +55,16 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
 
     static class UserViewHolder extends RecyclerView.ViewHolder {
         TextView usernameTextView;
+        Button deleteButton;
 
         UserViewHolder(View itemView) {
             super(itemView);
             usernameTextView = itemView.findViewById(R.id.usernameTextView);
-            // Add more view bindings as needed
+            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
+    }
+
+    public interface OnDeleteButtonClickListener {
+        void onDeleteButtonClick(User user);
     }
 }
