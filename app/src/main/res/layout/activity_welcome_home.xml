@@ -23,6 +23,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/black"/> <!-- Set a color, replace with your desired text color -->
 
+
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"

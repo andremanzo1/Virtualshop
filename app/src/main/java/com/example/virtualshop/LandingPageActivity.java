@@ -1,14 +1,13 @@
 package com.example.virtualshop;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 public class LandingPageActivity extends AppCompatActivity {
 
     @Override
@@ -69,5 +68,13 @@ public class LandingPageActivity extends AppCompatActivity {
                 finish(); // Close the LandingPageActivity
             }
         });
+
+    }
+    public void onViewAccountsButtonClick(View view) {
+        Intent viewAccountsIntent = new Intent(this, ViewAccountsActivity.class);
+        startActivity(viewAccountsIntent);
     }
 }
+
+
+

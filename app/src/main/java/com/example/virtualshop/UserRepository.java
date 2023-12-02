@@ -3,18 +3,26 @@ import android.app.Application;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+
+import java.util.List;
+
 public class UserRepository {
     private UserDao userDao;
-
+    private LiveData<List<User>> allUsers;
     public UserRepository(Application application) {
         try {
             AppDatabase db = AppDatabase.getDatabase(application);
             userDao = db.userDao();
+            allUsers = userDao.getAllUsers();
         } catch (ExceptionInInitializerError | RuntimeException e) {
             e.printStackTrace();
             Log.e("UserRepository", "Error initializing UserRepository", e);
             // Handle initialization error
         }
+    }
+    public LiveData<List<User>> getAllUsers() {
+        return allUsers;
     }
 
     public void getUserByUsernameAndPassword(String username, String password, UserRepositoryCallback callback) {

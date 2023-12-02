@@ -33,7 +33,10 @@
             android:exported="true">
 
         </activity>
-
+        <activity
+            android:name=".ViewAccountsActivity"
+            android:exported="true">
+        </activity>
         <activity
             android:name=".CreateAccountActivity"
             android:exported="true">

@@ -1,8 +1,12 @@
 package com.example.virtualshop;
 
+
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import java.util.List;
 
 @Dao
 public interface UserDao {
@@ -10,6 +14,8 @@ public interface UserDao {
     User getUserByUsernameAndPassword(String username, String password);
     @Query("SELECT * FROM User WHERE username = :username")
     User getUserByUsername(String username);
+    @Query("SELECT * FROM User")
+    LiveData<List<User>> getAllUsers();
     @Insert
     void insert(User user);
 
