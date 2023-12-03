@@ -17,10 +17,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     private List<Product> products = new ArrayList<>();
     private Context context;
     private OnDeleteClickListener onDeleteClickListener;
-
-    public ProductListAdapter(Context context, OnDeleteClickListener onDeleteClickListener) {
+    private boolean isAdmin;
+    public ProductListAdapter(Context context, OnDeleteClickListener onDeleteClickListener, boolean isAdmin) {
         this.context = context;
         this.onDeleteClickListener = onDeleteClickListener;
+        this.isAdmin = isAdmin;
     }
 
     @NonNull
@@ -36,6 +37,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         Product currentProduct = products.get(position);
         holder.productNameTextView.setText(currentProduct.getProductName());
         holder.productPriceTextView.setText(String.valueOf(currentProduct.getProductPrice()));
+
+        // Show deleteButton only if isAdmin, otherwise hide it
+        holder.deleteButton.setVisibility(isAdmin ? View.VISIBLE : View.GONE);
 
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override

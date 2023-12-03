@@ -17,14 +17,15 @@ import java.util.List;
 public class ViewProductsActivity extends AppCompatActivity implements ProductListAdapter.OnDeleteClickListener {
     private ProductViewModel productViewModel;
     private ProductListAdapter adapter;
-
+    private boolean isAdmin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_products);
+        isAdmin = getIntent().getBooleanExtra("IS_ADMIN", false);
 
         RecyclerView recyclerView = findViewById(R.id.productsRecyclerView);
-        adapter = new ProductListAdapter(this, this); // Pass the activity as the delete click listener
+        adapter = new ProductListAdapter(this, this,isAdmin); // Pass the activity as the delete click listener
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -39,6 +40,14 @@ public class ViewProductsActivity extends AppCompatActivity implements ProductLi
             }
         });
         FloatingActionButton addProductButton = findViewById(R.id.addProductButton);
+        if (isAdmin) {
+            // Show admin-specific UI elements or perform admin-specific actions
+            // For example, display the "Add Product" button
+            addProductButton.setVisibility(View.VISIBLE);
+        }else {
+            // Hide the "Add Product" button for regular users
+            addProductButton.setVisibility(View.GONE);
+        }
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -26,9 +26,20 @@
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="122dp"
+        android:layout_height="79dp"
         android:layout_below="@id/usernameTextView"
-        android:layout_marginTop="107dp"
+        android:layout_marginTop="102dp"
         android:text="Logout" />
+
+    <Button
+        android:id="@+id/viewProductsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="71dp"
+        android:layout_below="@+id/usernameTextView"
+        android:layout_alignBottom="@+id/usernameTextView"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="-96dp"
+        android:onClick="onViewProductsButtonClick"
+        android:text="View Products" />
 </RelativeLayout>

@@ -47,6 +47,16 @@ public class LandingPageActivity extends AppCompatActivity {
                 finish(); // Close the LandingPageActivity
             }
         });
+        Button viewProductsButton = findViewById(R.id.viewProductsButton);
+        viewProductsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle View Products button click
+                Intent viewProductsIntent = new Intent(LandingPageActivity.this, ViewProductsActivity.class);
+                startActivity(viewProductsIntent);
+            }
+        });
+
     }
 
     private void initializeAdminHome(String username) {
@@ -73,6 +83,7 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent viewProductsIntent = new Intent(LandingPageActivity.this, ViewProductsActivity.class);
+                viewProductsIntent.putExtra("IS_ADMIN", true);
                 startActivity(viewProductsIntent);
             }
         });
