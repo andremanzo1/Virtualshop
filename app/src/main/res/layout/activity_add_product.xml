@@ -1,0 +1,41 @@
+<!-- activity_add_product.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/addProductTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Product"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/productNameEditText"
+        android:layout_width="378dp"
+        android:layout_height="67dp"
+        android:layout_below="@id/addProductTitleTextView"
+        android:layout_marginTop="10dp"
+        android:hint="Product Name" />
+
+    <EditText
+        android:id="@+id/productPriceEditText"
+        android:layout_width="386dp"
+        android:layout_height="58dp"
+        android:layout_below="@id/productNameEditText"
+        android:layout_marginTop="28dp"
+        android:hint="Product Price"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/addProductButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productPriceEditText"
+        android:layout_marginTop="37dp"
+        android:text="Add Product" />
+</RelativeLayout>

@@ -24,8 +24,18 @@
         android:id="@+id/viewAccountsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/adminLogoutButton"
+        android:layout_marginTop="-604dp"
         android:onClick="onViewAccountsButtonClick"
         android:text="View Registered Accounts" />
 
+    <Button
+        android:id="@+id/viewProductsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewAccountsButton"
+        android:layout_marginTop="76dp"
+        android:onClick="onViewProductsButtonClick"
+        android:text="View Products" />
 
 </RelativeLayout>

@@ -68,12 +68,21 @@ public class LandingPageActivity extends AppCompatActivity {
                 finish(); // Close the LandingPageActivity
             }
         });
+        Button viewProductsButton = findViewById(R.id.viewProductsButton);
+        viewProductsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewProductsIntent = new Intent(LandingPageActivity.this, ViewProductsActivity.class);
+                startActivity(viewProductsIntent);
+            }
+        });
 
     }
     public void onViewAccountsButtonClick(View view) {
         Intent viewAccountsIntent = new Intent(this, ViewAccountsActivity.class);
         startActivity(viewAccountsIntent);
     }
+
 }
 
 

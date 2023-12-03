@@ -10,10 +10,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Product.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
-
+    public abstract ProductDao productDao();
     private static volatile AppDatabase INSTANCE;
 
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
